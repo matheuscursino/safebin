@@ -1,0 +1,51 @@
+<DOCTYPE html>
+	<html>
+		<head>
+			<title>safebin</title>
+		</head>
+		<body>
+			<h1>
+  ██████  ▄▄▄        █████▒▓█████  ▄▄▄▄    ██▓ ███▄    █ 
+▒██    ▒ ▒████▄    ▓██   ▒ ▓█   ▀ ▓█████▄ ▓██▒ ██ ▀█   █  
+░ ▓██▄   ▒██  ▀█▄  ▒████ ░ ▒███   ▒██▒ ▄██▒██▒▓██  ▀█ ██▒ 
+  ▒   ██▒░██▄▄▄▄██ ░▓█▒  ░ ▒▓█  ▄ ▒██░█▀  ░██░▓██▒  ▐▌██▒ 
+▒██████▒▒ ▓█   ▓██▒░▒█░    ░▒████▒░▓█  ▀█▓░██░▒██░   ▓██░ 
+▒ ▒▓▒ ▒ ░ ▒▒   ▓▒█░ ▒ ░    ░░ ▒░ ░░▒▓███▀▒░▓  ░ ▒░   ▒ ▒  
+░ ░▒  ░ ░  ▒   ▒▒ ░ ░       ░ ░  ░▒░▒   ░  ▒ ░░ ░░   ░ ▒░ <span>por cursino</span>
+░  ░  ░    ░   ▒    ░ ░       ░    ░    ░  ▒ ░   ░   ░ ░  
+      ░        ░  ░           ░  ░ ░       ░           ░ 
+                                        ░                
+</h1>
+			<h2 onclick="goCreate()">criar paste</h2>
+			<h2 onclick="goAbout()">[sobre]</h2>
+		</body>
+		<style>
+			body {
+				background-color: black;
+				color:  white;
+				text-align: center;
+				font-family: monospace;
+			}
+			h1 {
+				margin-top: 10%;
+				font-family: "Courier New", Monospace;
+				white-space: pre;
+				font-size: 10px;
+			}
+			h2 {
+				cursor:  pointer;
+				margin-top: 50px;
+			}
+			span {
+				position: absolute;
+			}
+		</style>
+		<script>
+			function goCreate(){
+				window.location.href = "/create.html"
+			};
+			function goAbout(){
+				window.location.href = "/about"
+			};
+		</script>
+	</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>safebin</title>
+			<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+		</head>
+		<body>
+			<h1>
+  ██████  ▄▄▄        █████▒▓█████  ▄▄▄▄    ██▓ ███▄    █ 
+▒██    ▒ ▒████▄    ▓██   ▒ ▓█   ▀ ▓█████▄ ▓██▒ ██ ▀█   █  
+░ ▓██▄   ▒██  ▀█▄  ▒████ ░ ▒███   ▒██▒ ▄██▒██▒▓██  ▀█ ██▒ 
+  ▒   ██▒░██▄▄▄▄██ ░▓█▒  ░ ▒▓█  ▄ ▒██░█▀  ░██░▓██▒  ▐▌██▒ 
+▒██████▒▒ ▓█   ▓██▒░▒█░    ░▒████▒░▓█  ▀█▓░██░▒██░   ▓██░ 
+▒ ▒▓▒ ▒ ░ ▒▒   ▓▒█░ ▒ ░    ░░ ▒░ ░░▒▓███▀▒░▓  ░ ▒░   ▒ ▒  
+░ ░▒  ░ ░  ▒   ▒▒ ░ ░       ░ ░  ░▒░▒   ░  ▒ ░░ ░░   ░ ▒░ <span>por cursino</span>
+░  ░  ░    ░   ▒    ░ ░       ░    ░    ░  ▒ ░   ░   ░ ░  
+      ░        ░  ░           ░  ░ ░       ░           ░ 
+                                        ░                
+</h1>
+            <textarea id="text"></textarea>
+			<h3 id="a">criar</h3>
+        <h3 onclick="window.location.href = '/'" class="goback">[voltar]</h3>
+		</body>
+			<script type="module">
+		  		const firebaseConfig = {
+		  		  apiKey: "AIzaSyC1sAyWLqOlRew8ESFpALDdp_80dxy_Si4",
+		  		  authDomain: "safebin-e4cb0.firebaseapp.com",
+		  		  projectId: "safebin-e4cb0",
+		  		  storageBucket: "safebin-e4cb0.appspot.com",
+		  		  messagingSenderId: "424907105052",
+		  		  appId: "1:424907105052:web:61fe21453bddc645a790d9"
+		  		};
+		  		firebase.initializeApp(firebaseConfig);
+		  		const db = firebase.firestore();
+		  		db.settings({ timestampInSnapshots: true});
+		  		function goHome(){
+		  		window.location.href = "/"
+		  		}
+		  		var text = document.getElementById('text')
+		  		document.getElementById('a').onclick = function(){
+		  		        db.collection('root').add({
+		  		            value: text.value
+		  		        })
+						  .then(function(docRef) {
+							  text.value = ""
+						       window.location.href= `/paste?id=${docRef.id}`
+						   })
+		  		}
+		  	</script>
+		<style>
+			body {
+				background-color: black;
+				color:  white;
+				text-align: center;
+				font-family: monospace;
+			}
+			textarea {
+			  width: 700px;
+			  height: 300px;
+			  padding: 10px 20px;
+			  box-sizing: border-box;
+			  border: 2px solid #ccc;
+			  border-radius: 4px;
+			  background-color: #000000;
+			  font-size: 16px;
+			  resize: none;
+			  color: white;
+			}
+			h1 {
+				margin-top: 2%;
+				font-family: "Courier New", Monospace;
+				white-space: pre;
+				font-size: 10px;
+			}
+			h2 {
+				cursor:  pointer;
+				margin-bottom: 50px;
+			}
+			h3 {
+				cursor: pointer;
+			}
+			span {
+				position: absolute;
+			}
+			.goback {
+			  margin-top: 50px;
+			  cursor: pointer;
+			}
+		</style>
+		<script>
+		</script>
+	</html>

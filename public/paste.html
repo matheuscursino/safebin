@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>safebin</title>
+			<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+		</head>
+		<body>
+			<h1>
+  ██████  ▄▄▄        █████▒▓█████  ▄▄▄▄    ██▓ ███▄    █ 
+▒██    ▒ ▒████▄    ▓██   ▒ ▓█   ▀ ▓█████▄ ▓██▒ ██ ▀█   █  
+░ ▓██▄   ▒██  ▀█▄  ▒████ ░ ▒███   ▒██▒ ▄██▒██▒▓██  ▀█ ██▒ 
+  ▒   ██▒░██▄▄▄▄██ ░▓█▒  ░ ▒▓█  ▄ ▒██░█▀  ░██░▓██▒  ▐▌██▒ 
+▒██████▒▒ ▓█   ▓██▒░▒█░    ░▒████▒░▓█  ▀█▓░██░▒██░   ▓██░ 
+▒ ▒▓▒ ▒ ░ ▒▒   ▓▒█░ ▒ ░    ░░ ▒░ ░░▒▓███▀▒░▓  ░ ▒░   ▒ ▒  
+░ ░▒  ░ ░  ▒   ▒▒ ░ ░       ░ ░  ░▒░▒   ░  ▒ ░░ ░░   ░ ▒░ <span>por cursino</span>
+░  ░  ░    ░   ▒    ░ ░       ░    ░    ░  ▒ ░   ░   ░ ░  
+      ░        ░  ░           ░  ░ ░       ░           ░ 
+                                        ░                
+</h1>
+		    <div class="text">
+                <a id="texto"></a>
+            </div>
+            <h3 onclick="window.location.href = '/'" class="goback">[voltar]</h3>
+		</body>
+	    <script type="module">
+		  const firebaseConfig = {
+		    apiKey: "AIzaSyC1sAyWLqOlRew8ESFpALDdp_80dxy_Si4",
+		    authDomain: "safebin-e4cb0.firebaseapp.com",
+		    projectId: "safebin-e4cb0",
+		    storageBucket: "safebin-e4cb0.appspot.com",
+		    messagingSenderId: "424907105052",
+		    appId: "1:424907105052:web:61fe21453bddc645a790d9"
+		  };
+		  firebase.initializeApp(firebaseConfig);
+		  const db = firebase.firestore();
+		  db.settings({ timestampInSnapshots: true});
+          // ---------------------------------- //
+		  const queryString = window.location.search;
+		  const urlParams = new URLSearchParams(queryString);
+		  const paper = urlParams.get('id')
+		  var text = document.getElementById("texto")
+
+		  var docRef = db.collection("root").doc(`${paper}`);
+
+		  docRef.get().then((doc) => {
+		      if (doc.exists) {
+				  var pp = Object.values(doc.data())[0]
+		          text.textContent = pp; 
+		      } else {
+		          console.log("documento nao existe!");
+		      }
+		  })
+
+		  function goHome(){
+		  window.location.href = "/"
+		  }
+		</script>
+		<style>
+			body {
+				background-color: black;
+				color:  white;
+				text-align: center;
+				font-family: monospace;
+			}
+            .text {
+                margin: auto;
+                width: 900px;
+				text-align: center;
+				padding: 10px 20px;
+				overflow-wrap: break-word;
+            }
+			h1 {
+				margin-top: 2%;
+				font-family: "Courier New", Monospace;
+				white-space: pre;
+				font-size: 10px;
+			}
+			h3 {
+				cursor: pointer;
+			}
+            a {
+                font-size: 20px;
+                font-family: monospace;
+            }
+			span {
+				position: absolute;
+			}
+			.goback {
+			  margin-top: 50px;
+			  cursor: pointer;
+			}
+		</style>
+		<script>
+		</script>
+	</html>
